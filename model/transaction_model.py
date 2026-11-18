@@ -29,7 +29,7 @@ class TransactionModel:
             conn, cursor = get_db_connection()
             
             sql = """
-                SELECT id, id_product, id_contributor, date_transaction, amount
+                SELECT id, id_product, id_contributor, date_transaction, amount, type
                 FROM transaction
             """
             
@@ -38,7 +38,7 @@ class TransactionModel:
             transactionData = cursor.fetchall()
             
             if not transactionData:
-                return None
+                return []
             
             transaction = [
                 Transaction(**transaction)
@@ -63,7 +63,7 @@ class TransactionModel:
             conn, cursor = get_db_connection()
             
             sql = """
-                SELECT id, id_product, id_contributor, date_transaction, amount
+                SELECT id, id_product, id_contributor, date_transaction, amount, type
                 FROM transaction
                 WHERE id = %s
             """

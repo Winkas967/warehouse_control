@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Entrar - Almoxarifado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="/static/css/style.css?v=1">
+<link rel="stylesheet" href="/static/css/login.css?v=1">
+</head>
+<body>
+<div class="wrap">
+  <form class="box" id="f" novalidate>
+    <h1>Almoxarifado</h1>
+    <p class="sub">Entre com seu nome e senha</p>
+    <div id="err" class="merr" role="alert"></div>
+    <label for="name">Nome</label>
+    <input id="name" type="text" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false">
+    <label for="password">Senha</label>
+    <div class="pw">
+      <input id="password" type="password" autocomplete="current-password">
+      <button type="button" id="eye">Mostrar</button>
+    </div>
+    <button type="submit" class="go pri" id="go">Entrar</button>
+  </form>
+</div>
+<script src="/static/js/login.js?v=1"></script>
+</body>
+</html>

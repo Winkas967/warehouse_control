@@ -1,9 +1,12 @@
 from flask import Blueprint, jsonify, request
 from service.sector_service import SectorService
+from utils.auth import login_required, admin_required
 
 sector_route = Blueprint('sector_route', __name__)
 
 @sector_route.route("/sector", methods=['GET'])
+@login_required
+@admin_required
 def get_all():
     try:
             
@@ -20,6 +23,8 @@ def get_all():
         }), 500
         
 @sector_route.route("/sector/<int:id>", methods=['GET'])
+@login_required
+@admin_required
 def get_by_id(id):
     try:
         
@@ -34,6 +39,8 @@ def get_by_id(id):
         }), 500
         
 @sector_route.route("/sector/<string:name>", methods=['GET'])
+@login_required
+@admin_required
 def get_by_name(name):
     try:
         
@@ -48,6 +55,8 @@ def get_by_name(name):
         }), 500
         
 @sector_route.route("/sector/create", methods=['POST'])
+@login_required
+@admin_required
 def create():
     try:
         
@@ -60,6 +69,8 @@ def create():
         raise Exception(str(e))
     
 @sector_route.route("/sector/delete/<int:id>", methods=['DELETE'])
+@login_required
+@admin_required
 def delete(id):
     try:
         

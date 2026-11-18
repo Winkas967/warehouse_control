@@ -32,7 +32,7 @@ class ContributorModel:
             contributorData = cursor.fetchall()
             
             if not contributorData:
-                return None
+                return []
             
             contributor = [
                 Contributor(**contributor)
@@ -159,6 +159,38 @@ class ContributorModel:
             conn.commit()
             
             return True
+        except Exception as e:
+            raise Exception(str(e))
+        finally:
+            if conn:
+                conn.close()
+            if cursor:
+                cursor.close()
+
+    @staticmethod
+    def get_all_for_selection():
+        conn = None
+        cursor = None
+        
+        try:
+            conn, cursor = get_db_connection()
+            
+            sql = """
+                SELECT c.id, c.id_sector, c.name
+                FROM contributor c
+                INNER JOIN sector s ON s.id = c.id_sector
+                WHERE LOWER(TRIM(s.name)) <> 'admin'
+                ORDER BY c.name
+            """
+            
+            cursor.execute(sql)
+            data = cursor.fetchall()
+            
+            return [
+                Contributor(**contributor)
+                for contributor in data
+            ]
+            
         except Exception as e:
             raise Exception(str(e))
         finally:

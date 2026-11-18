@@ -63,4 +63,7 @@ class ContributorService:
         except Exception as e:
             raise Exception(str(e))
             
+    @staticmethod
+    def get_all_for_selection():
+        return ContributorModel.get_all_for_selection()
         

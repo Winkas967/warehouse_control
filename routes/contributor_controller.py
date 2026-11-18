@@ -1,9 +1,12 @@
 from flask import Blueprint, jsonify, request
 from service.contributor_service import ContributorService
+from utils.auth import login_required, admin_required
 
 contributor_route = Blueprint('contributor_route', __name__)
 
 @contributor_route.route("/contributor", methods=['GET'])
+@login_required
+
 def get_all():
     try:
         
@@ -20,6 +23,7 @@ def get_all():
         }), 500
 
 @contributor_route.route("/contributor/<string:name>", methods=['GET'])        
+@login_required
 def get_by_name(name):
     try:
         
@@ -37,6 +41,8 @@ def get_by_name(name):
         }), 500
         
 @contributor_route.route("/contributor/<int:id>", methods=['GET'])
+@login_required
+
 def get_by_id(id):
     try:
         
@@ -53,6 +59,8 @@ def get_by_id(id):
         }), 500
         
 @contributor_route.route("/contributor", methods=['POST'])
+@login_required
+@admin_required
 def create():
     try:
         
@@ -66,6 +74,8 @@ def create():
         
         
 @contributor_route.route("/contributor/delete/<int:id>", methods=['DELETE'])
+@login_required
+@admin_required
 def delete(id):
     try:
         
@@ -74,4 +84,18 @@ def delete(id):
         return jsonify(contributorDelete)
     except Exception as e:
         raise Exception(str(e))
+    
+@contributor_route.route("/contributor/options", methods=['GET'])
+@login_required
+def get_options():
+    try:
+        contributors = ContributorService.get_all_for_selection()
+        
+        return jsonify([
+            contributor.to_dict()
+            for contributor in contributors
+        ])
+        
+    except Exception as e:
+        return jsonify({"messages": str(e)}), 500
         

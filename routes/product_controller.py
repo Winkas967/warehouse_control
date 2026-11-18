@@ -1,9 +1,11 @@
 from flask import Blueprint, jsonify, request
 from service.product_service import ProductService
+from utils.auth import login_required, admin_required
 
 product_route = Blueprint('product_route', __name__)
 
 @product_route.route("/product", methods=['GET'])
+@login_required
 def get_all():
     try:
         
@@ -20,6 +22,7 @@ def get_all():
         }), 500
         
 @product_route.route("/product/<string:name>", methods=['GET'])
+@login_required
 def get_by_name(name):
     try:
         
@@ -37,6 +40,7 @@ def get_by_name(name):
         }), 500
         
 @product_route.route("/product/<int:id>", methods = ['GET'])
+@login_required
 def get_by_id(id):
     try:
         
@@ -54,6 +58,8 @@ def get_by_id(id):
         }), 500
         
 @product_route.route("/product", methods = ["POST"])
+@login_required
+@admin_required
 def create():
     try:
         data = request.get_json()
@@ -65,6 +71,8 @@ def create():
         raise Exception(str(e))
     
 @product_route.route("/delete/product/<int:id>", methods = ["POST"])
+@login_required
+@admin_required
 def delete(id):
     try:
         
@@ -75,6 +83,8 @@ def delete(id):
         raise Exception(str(e))
     
 @product_route.route("/update/product/<int:id>", methods = ["POST"])
+@login_required
+@admin_required
 def update(id):
     try:
         

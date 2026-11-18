@@ -31,7 +31,7 @@ class SectorModel:
             sectorData = cursor.fetchall()
             
             if not sectorData:
-                return None
+                return []
             
             sector = [
                 Sector(**sector)

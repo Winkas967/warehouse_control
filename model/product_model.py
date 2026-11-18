@@ -34,7 +34,7 @@ class ProductModel:
             productData = cursor.fetchall()
             
             if not productData:
-                return None
+                return []
             
             products = [
                 Product(**product)

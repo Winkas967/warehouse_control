@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almoxarifado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="/static/css/style.css?v=1">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Almoxarifado</h1>
+    <div class="hbtns"><span id="who"></span><button class="ghost" data-act="refresh">Atualizar</button><button class="ghost" data-act="logout">Sair</button></div>
+  </header>
+  <nav>
+    <button class="on" data-act="tab" data-t="product">Estoque</button>
+    <button data-act="tab" data-t="move">Movimentar</button>
+    <button data-act="tab" data-t="contributor">Colaboradores</button>
+    <button data-act="tab" data-t="sector">Setores</button>
+    <button data-act="tab" data-t="report">Relatórios</button>
+  </nav>
+  <main id="view"></main>
+</div>
+<div id="modal"></div>
+<div id="toast"></div>
+<script src="/static/js/app.js?v=1"></script>
+</body>
+</html>
