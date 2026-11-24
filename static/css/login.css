@@ -6,3 +6,9 @@ body{overflow:auto}
 .pw{display:-webkit-flex;display:flex}
 .pw input{-webkit-flex:1;flex:1;min-width:0;margin-right:10px}
 .pw button{-webkit-flex:none;flex:none;min-width:100px}
+img {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    height: auto;
+}

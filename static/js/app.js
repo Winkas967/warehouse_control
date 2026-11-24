@@ -191,7 +191,7 @@
       '<label for="t_qty">Quantidade</label><div class="step"><button data-act="step" data-d="-1">−</button>' +
       '<input id="t_qty" type="number" inputmode="numeric" pattern="[0-9]*" min="1" value="' + esc(F.qty) + '">' +
       '<button data-act="step" data-d="1">+</button></div>' +
-      fld('t_date', 'Data', 'date', F.date, 'readonly placeholder="AAAA-MM-DD"') +
+      fld('t_date', 'Data e Hora', 'datetime-local', F.date, 'readonly') +
       '<button class="go ' + (F.type === 'entrada' ? 'in' : 'out') + '" data-act="doMove">Registrar ' + (F.type === 'entrada' ? 'entrada' : 'saída') + '</button></div>' +
       '<h3>Últimas movimentações</h3><div class="list">';
     for (i = 0; i < T.length && i < hist; i++) {
