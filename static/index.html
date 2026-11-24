@@ -11,8 +11,13 @@
 <body>
 <div id="app">
   <header>
-    <img src="/static/img/unimed-ssp-fundo-transparente.png" alt="Logo">
-    <div class="hbtns"><span id="who"></span><button class="ghost" data-act="refresh">Atualizar</button><button class="ghost" data-act="logout">Sair</button></div>
+
+    <img src="/static/img/unimed-ssp-fundo-transparente.png" 
+    alt="Logo" 
+    onclick="location.reload()" 
+    style="cursor: pointer;">
+
+    <div class="hbtns"><span id="who"></span><button class="ghost" data-act="logout">Sair</button></div>
   </header>
   <nav>
     <button class="on" data-act="tab" data-t="product">Estoque</button>
